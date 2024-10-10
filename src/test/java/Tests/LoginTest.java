@@ -20,27 +20,30 @@ public class LoginTest extends TestBase {
     @Test (priority = 1)
     public void LoginWithValidCredential (){
         loginPage_object.navigateToLoginPage();
-        loginPage_object.enterUsername("tomsmith");
-        loginPage_object.enterPassword("SuperSecretPassword!");
-        loginPage_object.clickLoignButton();
+        loginPage_object.login("tomsmith","SuperSecretPassword!");
+//        loginPage_object.enterUsername("tomsmith");
+//        loginPage_object.enterPassword("SuperSecretPassword!");
+//        loginPage_object.clickLoignButton();
         secureAreaPage_object.validateLoginSuccessfully();
     }
 
     @Test (priority = 2)
     public void LoginWithInvalidUsername (){
         loginPage_object.navigateToLoginPage();
-        loginPage_object.enterUsername("invalid");
-        loginPage_object.enterPassword("SuperSecretPassword!");
-        loginPage_object.clickLoignButton();
+        loginPage_object.login("invalid","SuperSecretPassword!");
+//        loginPage_object.enterUsername("invalid");
+//        loginPage_object.enterPassword("SuperSecretPassword!");
+//        loginPage_object.clickLoignButton();
         loginPage_object.VerifyInvalidUsername();
     }
 
     @Test (priority = 3)
     public void LoginWithInvalidPassword (){
         loginPage_object.navigateToLoginPage();
-        loginPage_object.enterUsername("tomsmith");
-        loginPage_object.enterPassword("invalid");
-        loginPage_object.clickLoignButton();
+        loginPage_object.login("tomsmith","invalid");
+//        loginPage_object.enterUsername("tomsmith");
+//        loginPage_object.enterPassword("invalid");
+//        loginPage_object.clickLoignButton();
         loginPage_object.VerifyInvalidPassword();
     }
 
