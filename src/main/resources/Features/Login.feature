@@ -1,10 +1,9 @@
+@RegressionTest
 Feature: Test Login Feature
 
   Scenario: Validate successful login using valid credentials
     Given User navigate to login page
-    When  User enters Username "tomsmith"
-    And   User enters Password "SuperSecretPassword!"
-    And   User clicks login Button
+    When  User login with credentials "tomsmith" "SuperSecretPassword!"
     Then  User should login successfully
 
 Scenario Outline: Validate Error message appearance when using invalid username or password

@@ -2,14 +2,11 @@ package StepDefs;
 
 import Pages.LoginPage;
 import Pages.SecureAreaPage;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
 
 public class Login_StepDef {
 
@@ -30,7 +27,24 @@ public class Login_StepDef {
         loginPage_Object.NavigateToLoginPage();
     }
 
+    @When("User login with credentials {string} {string}")
+    public void userLoginWithCredentials(String username, String password) {
+        loginPage_Object.EnterUsername(username);
+        loginPage_Object.EnterPassword(password);
+        loginPage_Object.ClickLoginBtutton();
+    }
 
+    @Then("User should login successfully")
+    public void userShouldLoginSuccessfully() {
+        secureAreaPage_Object.validateLoginSuccessfully();
+    }
+
+    @Then("Error message Should be displayed")
+    public void errorMessageShouldBeDisplayed() {
+        loginPage_Object.ValidateErrorMessageApperance();
+    }
+
+    // Cancel Them
     @When("User enters Username {string}")
     public void userEntersUsername(String username) {
         loginPage_Object.EnterUsername(username);
@@ -46,13 +60,4 @@ public class Login_StepDef {
         loginPage_Object.ClickLoginBtutton();
     }
 
-    @Then("User should login successfully")
-    public void userShouldLoginSuccessfully() {
-        secureAreaPage_Object.validateLoginSuccessfully();
-    }
-
-    @Then("Error message Should be displayed")
-    public void errorMessageShouldBeDisplayed() {
-        loginPage_Object.ValidateErrorMessageApperance();
-    }
 }
